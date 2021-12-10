@@ -1,0 +1,39 @@
+<div class="container-body">   
+
+    <div class="container-c">   
+        <div class="header"><p class="label">Тот самый <b>БЛЭКДЖЕК</b></p></div>
+    
+        <div class="header" style="margin-top: 30px;"><h1><b>Игрок 1</b></h1></div>
+      
+        <div class="block-left" @cardsAnimation>
+     
+            <ng-template ngFor let-card [ngForOf]="cards" let-p1="index">
+                <div class="card border-0" *ngIf="stateCards[p1] == 1" style="background: none;" @cardAnimation>
+                    <div class="card-body" style="padding: 1px !important;">
+                       <img class="card-img-top" src="./assets/blackjack/cards_png/{{ card }}.png" alt="" width="100%">
+                    </div>
+                </div>
+            </ng-template>
+      
+        </div>
+    
+        <div class="header"><h1><b>Игрок 2</b></h1></div>
+      
+        <div class="block-right" @cardsAnimation>
+    
+            <ng-template ngFor let-card [ngForOf]="cards" let-p2="index">
+                <div class="card border-0" *ngIf="stateCards[p2] == 2" style="background: none;" @cardAnimation>
+                    <div class="card-body" style="padding: 1px !important;">
+                       <img class="card-img-top" src="./assets/blackjack/cards_png/{{ card }}.png" alt="" width="100%">
+                    </div>
+                </div>
+            </ng-template>
+      
+        </div>
+    
+        
+      
+      </div>
+    
+      </div>
+    

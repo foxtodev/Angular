@@ -1,0 +1,50 @@
+<div class="container-c">
+    <div class="card">
+      <div class="card-body">
+        <div class="no-data text-center" *ngIf="WinnersTable.length == 0">
+          <p>Ни одного победителя еще не добавлено</p>
+        </div>
+        <div *ngIf="WinnersTable.length !== 0">
+          <h5 class="card-titlemb-3 text-center mb-4">Список победителей</h5>
+
+      <div class="col-md-12">
+        <table class="table table-striped table-bordered table-dark">
+          <thead class="thead-dark">
+            <tr>
+                <!--<th *ngFor="let key of Documents | keys" scope="col" class="click" (click)="updateSort(key)">{{ key }}
+                    <i class="fa" [ngClass]="{'fa-sort': columnSort != key, 
+                      'fa-sort-asc': (columnSort == key && !directionSort), 
+                      'fa-sort-desc': (columnSort == key && directionSort) }"
+                    aria-hidden="true"> </i>
+                </th>-->
+              <th scope="col">Фото</th>
+              <!--<th scope="col">Случай</th>-->
+              <th scope="col">Номер карты</th>
+              <th scope="col">Имя Фамилия</th>
+              <th scope="col">Тип локации</th>
+              <th scope="col">Локация</th>
+              <th scope="col">Action</th>
+              <th scope="col">Дата</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let winner of WinnersTable; let i = index" [ngClass]="{ 'bg-danger': i === 0 }">
+              <td><img class="card-img-top" [src]='winner.playerImage' alt="" style="width: 250px; padding: 15px;"></td>
+              <!--<td>{{winner.randomNum}}</td>-->
+              <td>{{winner.playerLocation.playerId}}</td>
+              <td>{{winner.playerLocation.firstName}}<br>{{winner.playerLocation.lastName}}</td>
+              <td>{{winner.playerLocation.rank}}</td>
+              <td>{{winner.playerLocation.locationType}}</td>
+              <td>{{winner.playerLocation.location}}</td>
+              <td>{{winner.currentDate  | date: 'dd.MM.yyyy H:mm:ss'}}</td>
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

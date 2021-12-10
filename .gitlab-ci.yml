@@ -1,0 +1,36 @@
+services:
+  - name: docker:dind
+    command: ["--insecure-registry=docker-registry-bo1.tigredecristal.local"]
+    
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - build
+  - deploy
+  
+docker-build:
+  stage: build
+  only:
+    - master
+  script:
+    - docker build -t docker-registry-bo1.tigredecristal.local/jackpot-slot-table . 
+    - docker push docker-registry-bo1.tigredecristal.local/jackpot-slot-table
+
+docker-run:
+  stage: deploy
+  only:
+    - master
+  image: tetraweb/php:7.0
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo -e "$PUBLIC_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh root@10.119.97.26 "
+        docker stop jackpot-slot-table || true && 
+        docker rm jackpot-slot-table || true &&
+        docker rmi docker-registry-bo1.tigredecristal.local/jackpot-slot-table || true &&
+        docker run -dti --name jackpot-slot-table --restart always -p 4203:4200 docker-registry-bo1.tigredecristal.local/jackpot-slot-table:latest"

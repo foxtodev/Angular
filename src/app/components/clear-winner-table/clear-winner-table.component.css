@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    background-color: #dfdfdf;
+    margin: 0;
+  }
+
+  h3 {
+    padding-top: 50px;
+  }
+
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #33b5e5;
+  }
+
+  .container-c {
+    padding: 20px;
+    display:flex;
+    width:100%;
+    flex-flow:row wrap;
+    justify-content: center;
+    /* padding-top: 50px; */
+    /* justify-content: space-around; */
+  }
+  
+  .card {
+    margin: 20px;
+    padding: 10px;
+  }
+  
+  .cardLink {
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff;
+    transition: all .2s linear;
+    /* box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2); */
+  }
+  
+  .cardLink:hover {
+    background-color: rgb(198, 226, 255);
+    /* box-shadow: -1px 5px 29px 0px rgba(0,0,0,0.4); */
+  }
+  
+    
+  .delay1 { animation-delay: .3s; }
+  .delay2 { animation-delay: .6s; }
+  .delay3 { animation-delay: .9s; }
+  .delay4 { animation-delay: 1.2s; }
+  .delay5 { animation-delay: 1.5s; }
+  .delay6 { animation-delay: 1.8s; }
+  .delay7 { animation-delay: 2.1s; }
+  .delay8 { animation-delay: 2.4s; }
+  
+
+.click {
+  cursor: pointer;
+}
+
+td
+{
+  /*text-align:center;*/
+  vertical-align:middle;
+}

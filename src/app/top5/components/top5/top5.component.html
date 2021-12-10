@@ -1,0 +1,41 @@
+    <div class="container2"  style="background: url('./assets/top5/back.jpg') no-repeat center center fixed #000;">
+    <div class="layout" [ngStyle]="{'background': '#000 url(./assets/top5/' + rank[rankNow] + '/back.jpg) no-repeat center center fixed'}" *ngIf="show" @show>
+
+	  <div class="header">
+	    <img src="./assets/top5/logo.png" alt="" title="" *ngIf="!finalR" />
+	    <img src="./assets/top5/_header-winners.png" alt="" title="" *ngIf="finalR" /> 
+	  </div>
+
+	  <div class="top5tables" [ngStyle]="{'background': 'url(./assets/top5/' + rank[rankNow] + '/top_back.png) no-repeat center center'}">
+
+        <img src="./assets/top5/{{ rank[rankNow] }}/tables.png" style="margin-top: 15px;" alt="" title="" />
+        
+        <table class="table table-striped table-bordered">
+            <tbody>
+              <tr *ngFor="let t_record of rating_tables">
+                <td><!--<span style="font-size: 40px">id:</span>&nbsp;--><b>{{ t_record.playerId }}</b></td>
+                <td><b>{{ format_number(t_record.totalPoints) }}</b>&nbsp;<span style="font-size: 40px">pts</span></td>
+              </tr>
+            </tbody>
+        </table>
+
+	  </div>
+
+	  <div class="top5tables" [ngStyle]="{'background': 'url(./assets/top5/' + rank[rankNow] + '/top_back.png) no-repeat center center'}">
+
+        <img src="./assets/top5/{{ rank[rankNow] }}/slots.png" style="margin-top: 15px;" alt="" title="" />
+        
+        <table class="table table-striped table-bordered">
+            <tbody>
+              <tr *ngFor="let s_record of rating_slots">
+                <td><!--<span style="font-size: 40px">id:</span>-->&nbsp;<b>{{ s_record.playerId }}</b></td>
+                <td><b>{{ format_number(s_record.totalPoints) }}</b>&nbsp;<span style="font-size: 40px">pts</span></td>
+              </tr>
+            </tbody>
+        </table>
+ 
+	  </div>
+
+
+	</div>
+</div>

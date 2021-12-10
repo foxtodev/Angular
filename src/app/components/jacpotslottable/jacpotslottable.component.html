@@ -1,0 +1,101 @@
+
+<div class="container-c" style="background: url('../../../assets/back_NY.jpg') no-repeat center center fixed; background-size: cover;">
+  
+    <div class="block-left">
+  
+        <div [hidden] = "ButtonTable" style="position: fixed;"  [@animationButtons]="stateButtons">
+            <img src='../../../assets/slot_back.png' alt="" style="width: 450px; margin-top: -20%">
+          </div>        
+  
+      <div [hidden] = "ButtonSlot" style="position: fixed;">
+        <p class="text-center" (click)="getSlotWinner()" [@animationButtons]="stateButtons">
+            <span style="font-size: 200%!important; font-weight: bold;">
+                <p class="button">СЛОТ-АВТОМАТЫ</p>
+            </span>
+        </p>
+      </div>
+  
+    </div>
+  
+    <div class="block-right">
+        
+      <div [hidden] = "ButtonTable" style="position: fixed;"  [@animationButtons]="stateButtons">
+        <img src='../../../assets/table_back.png' alt="" style="width: 450px; margin-top: -20%">
+      </div>
+
+       <div [hidden] = "ButtonTable" style="position: fixed;">
+            <p class="text-center" (click)="getTableWinner()" [@animationButtons]="stateButtons" (@animationButtons.done)="animBattonsEnd($event)">
+                <span style="font-size: 200%!important; font-weight: bold;">
+                    <p class="button">СТОЛЫ</p>
+                </span>
+            </p>
+      </div>
+  
+    </div>
+  
+  </div>
+
+  <div class="container-c" style="position: fixed; top: 0px; width: 100%; height: auto;">
+    <!-- <p class="text-center"><img src='../../../assets/surprize.png' alt="" style="width: 65%;"></p> -->
+    <p class="card-text text-center main-title" style="font-size: 400%!important; line-height: 150px;"><strong>НОВОГОДНИЙ ДЖЕКПОТ</strong></p>
+</div>
+  
+  <div class="container-c" style="background: none;" [hidden] = "CardWinner"> <!-- [hidden] = "CardWinner" -->
+  
+    <div class="card text-white bg-danger" 
+    [@animationWinner]="stateWinner" (@animationWinner.start)="animWinnerStart($event)" (@animationWinner.done)="animWinnerEnd($event)">
+      <!--<img class="card-img-top" [src]='col.playerImage' alt="" style="padding: 15px;">-->
+        <div class="card-header text-center text-white bg-danger">
+            <h4 class="card-text text-center" style="margin-top: 20px; margin-left: 10px; margin-right: 10px;"><strong>{{ labelWinner }}</strong></h4>
+        </div>
+        <div class="card-body">
+          <h4 class="card-text text-center" style="font-size: 300%!important; margin: 0 auto; max-width: 700px; word-wrap: break-word;">
+            <strong>{{Winner?.firstName}}</strong> <!-- {{Winner?.lastName}} -->
+        </h4>
+          <p class="card-text text-center" style="font-size: 180%!important; margin-top: 20px;"><b>
+            <!--Rank: {{SlotWinner?.rank}}<br>-->
+            Номер карты: {{Winner?.playerId}}<br>
+            {{ labelLocation }} {{Winner?.location}}
+          </b></p>
+        </div>
+        <div class="card-footer text-white bg-danger">
+          <p class="timer" style="margin-bottom: 5px; margin-top: -40px;">{{ (timerview - (timerview % 60)) / 60 | number:'2.0' }} : {{ timerview % 60 | number:'2.0' }}</p>
+          <p class="text-center">
+            <span style="font-size: 200%!important; font-weight: bold;">
+                <p class="button" (click)="releaseWinner()">OK</p>
+            </span>
+          </p>
+        </div>
+    </div>
+  
+  </div>
+  
+  <div class="container-c" style="background: none;" [hidden] = "Catching"> <!-- [hidden] = "Catching" -->
+  
+    <div class="card text-white" [ngClass]="{ 
+        'bg-info': WinnerSelected === false,
+        'bg-danger': WinnerSelected  === true
+      }"  [@animationCatching]="stateCatching" (@animationCatching.start)="animCatchingStart($event)" (@animationCatching.done)="animCatchingEnd($event)">
+        <div class="card-body">
+          <p class="card-text text-center" style="font-size: 300%!important;"><strong>Определяем победителя<br>{{ labelLocation }}</strong></p>
+          <p class="card-text text-center catching" style="margin-top: -40px;">{{ RandomLocation }}</p>
+        </div>
+    </div>
+    
+  </div>
+
+  <div class="container-c" style="background: none;" [hidden] = "NoPlayers"> <!-- [hidden] = "Catching" -->
+  
+    <div class="card text-white bg-info">
+        <div class="card-body">
+          <p class="card-text text-center" style="font-size: 300%!important;"><strong>Нет новых ироков</strong></p>
+          <p class="text-center">
+            <span style="font-size: 200%!important; font-weight: bold;">
+                <p class="button" (click)="NoPlayers = true">OK</p>
+            </span>
+          </p>
+        </div>
+    </div>
+    
+  </div>
+  

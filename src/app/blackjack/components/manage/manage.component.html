@@ -1,0 +1,61 @@
+<div class="container-c">   
+    
+    <div class="block-left" style="height: 30px;" (click)='changePlayer(1)' [ngClass]="{ 
+        'playerLabelSelected': playerState === 1,
+        '': playerState === 2
+    }" >
+
+  Игрок 1
+
+    </div>
+
+    <div class="block-right" style="height: 30px;" (click)='changePlayer(1)' [ngClass]="{ 
+        'playerLabelSelected': playerState === 2,
+        '': playerState === 1
+    }" >
+
+  Игрок 2
+
+    </div>
+  
+    <div class="block-left" (click)='changePlayer(1)' [ngClass]="{ 
+        'playerSelected': playerState === 1,
+        'noborder': playerState === 2
+    }" @cardsAnimation *ngIf="stateCards.length > 0">
+  
+    <ng-template ngFor let-card [ngForOf]="cards" let-p1="index"> <!--  | sortBy:'order':true -->
+        <div class="card border-0" *ngIf="stateCards[p1] === 1" style="background: none;" @cardAnimation>
+            <div class="card-body" style="padding: 1px !important;">
+               <img class="card-img-top" src="./assets/blackjack/cards_png/{{ card }}.png" alt="" width="100%" (click)='removeCard(p1)' style="cursor: pointer;">
+            </div>
+        </div>
+    </ng-template>
+  
+    </div>
+  
+    <div class="block-right" (click)='changePlayer(2)' [ngClass]="{ 
+        'playerSelected': playerState === 2, 
+        'noborder': playerState === 1 
+    }" @cardsAnimation *ngIf="stateCards.length > 0">
+        
+    <ng-template ngFor let-card [ngForOf]="cards" let-p2="index">
+        <div class="card border-0" *ngIf="stateCards[p2] === 2" style="background: none;" @cardAnimation>
+            <div class="card-body" style="padding: 1px !important;">
+               <img class="card-img-top" src="./assets/blackjack/cards_png/{{ card }}.png" alt="" width="100%" (click)='removeCard(p2)' style="cursor: pointer;">
+            </div>
+        </div>
+    </ng-template>
+  
+    </div>
+  
+  </div>
+
+<div class="container-c" *ngIf="stateCards.length > 0">
+    <div class="card sidebar" style="border: 0px;" *ngFor="let card of cards; let i = index" 
+    [style.transform]="stateCards[i] != 0 ? 'scale(0)' : 'scale(1)'"
+    [style.opacity]="stateCards[i] != 0 ? '0' : '1'" [style.visibility]="stateCards[i] != 0 ? 'hidden' : 'visible'"> <!-- [style.display]="stateCards[i] != 0 ? 'none' : 'flex'" -->
+        <div class="card-body" style="padding: 1px !important;">
+           <img class="card-img-top" src="./assets/blackjack/cards_png/{{ card }}.png" alt="" width="100%" (click)='addCard(i)' style="cursor: pointer;">
+        </div>
+    </div>
+</div>

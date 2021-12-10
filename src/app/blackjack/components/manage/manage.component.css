@@ -1,0 +1,85 @@
+.container-c {
+  padding: 20px;
+  display:flex;
+  width:100%;
+  flex-flow:row wrap;
+  justify-content: center;
+  /* padding-top: 50px; */
+  /* justify-content: space-around; */
+}
+  .card {
+    margin: 5px;
+    padding: 0px;
+    width: calc((100vw - 40px) / 15 - 20px);
+  }
+
+  .block-left{
+      background: rgb(46, 58, 102);
+      width:50%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      align-content: center; 
+      justify-content: center; 
+      overflow:auto;
+      float:left;
+
+      color: #fff;
+font-size: 1rem;
+font-weight: bold;
+text-transform: uppercase;
+    }
+    
+    .block-right{
+      background: rgb(131, 61, 61);
+      width:50%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      align-content: center; 
+      justify-content: center; 
+      overflow:auto;
+
+      color: #fff;
+font-size: 1rem;
+font-weight: bold;
+text-transform: uppercase;
+    }
+
+  .center-pic{
+    display:block;
+    margin:auto;
+    }
+
+  .noborder {
+    border: 0px;
+  }
+
+  .playerSelected {
+    border: 10px solid rgb(0, 231, 77);
+  }
+
+  .playerLabelSelected {
+    background: rgb(0, 231, 77);
+    color: rgb(0, 0, 0);
+font-size: 1rem;
+font-weight: bold;
+text-transform: uppercase;
+  }
+
+  .sidebar {
+    transition: all .5s;
+  }
+
+  .fixed {
+    transform: none;
+    transition: transform .2s;
+  }
+  
+  .ng-hide:not(.ng-hide-animate) {
+    display: block !important;
+  }
+  
+  .fixed.ng-hide {
+     transform: translate(-110%)
+  }
